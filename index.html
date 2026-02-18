@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модуль 37 - Решения заданий</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .task {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .note {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Модуль 37 - Решения заданий</h1>
+
+    <div class="note">
+        <strong>Примечание:</strong> Откройте консоль браузера (F12), чтобы увидеть результаты выполнения заданий.
+    </div>
+
+    <div class="task">
+        <h2>Задание 6.1 - Проверка палиндрома</h2>
+        <p>Проверяет, является ли слово палиндромом.</p>
+        <button onclick="runTask1()">Запустить задание 6.1</button>
+    </div>
+
+    <div class="task">
+        <h2>Задание 6.2 - Уникальные значения массива</h2>
+        <p>Создаёт массив только с уникальными значениями.</p>
+        <button onclick="runTask2()">Запустить задание 6.2</button>
+    </div>
+
+    <div class="task">
+        <h2>Задание 6.3 - Создание массива от 0 до N</h2>
+        <p>Запрашивает число и создаёт массив от 0 до этого числа.</p>
+        <button onclick="runTask3()">Запустить задание 6.3</button>
+    </div>
+
+    <div class="task">
+        <h2>Задание 6.4 - Поле для крестиков-ноликов</h2>
+        <p>Рисует поле 3x3 для игры "Крестики-нолики".</p>
+        <button onclick="runTask4()">Запустить задание 6.4</button>
+    </div>
+
+    <div class="task">
+        <h2>Задание 6.5 - Извлечение значений из объекта</h2>
+        <p>Извлекает все значения из объекта в массив.</p>
+        <button onclick="runTask5()">Запустить задание 6.5</button>
+    </div>
+
+    <div class="task">
+        <button onclick="runAllTasks()" style="background-color: #2196F3;">Запустить все задания</button>
+    </div>
+
+    <script>
+        // Задание 6.1
+        function runTask1() {
+            console.log('\n=== Задание 6.1 - Проверка палиндрома ===');
+
+            function checkPalindrome(word) {
+                const normalized = word.toLowerCase().replace(/\s/g, '');
+                const reversed = normalized.split('').reverse().join('');
+
+                if (normalized === reversed) {
+                    console.log(`Слово ${word} является палиндромом`);
+                } else {
+                    console.log(`Слово ${word} не является палиндромом`);
+                }
+            }
+
+            checkPalindrome('Довод');
+            checkPalindrome('Сантимент');
+            checkPalindrome('А роза упала на лапу Азора');
+        }
+
+        // Задание 6.2
+        function runTask2() {
+            console.log('\n=== Задание 6.2 - Уникальные значения ===');
+
+            const arr = [1, 2, 3, 1, 5, 4, 2, 3, 5, 'they', 'don\'t', 'know', 'that', 'we', 'know', 'that', 'they', 'know'];
+            const uniqueArr = [...new Set(arr)];
+
+            console.log('Исходный массив:', arr);
+            console.log('Уникальные значения:', uniqueArr);
+        }
+
+        // Задание 6.3
+        function runTask3() {
+            console.log('\n=== Задание 6.3 - Создание массива ===');
+
+            const userInput = prompt('Введите число:');
+            const num = Number(userInput);
+
+            const arr = [];
+            for (let i = 0; i <= num; i++) {
+                arr.push(i);
+            }
+
+            console.log(`Массив от 0 до ${num}:`, arr);
+        }
+
+        // Задание 6.4
+        function runTask4() {
+            console.log('\n=== Задание 6.4 - Крестики-нолики ===');
+
+            const field = [
+                ['x', 'o', 'x'],
+                ['o', 'x', 'o'],
+                ['x', 'o', 'x']
+            ];
+
+            for (let i = 0; i < field.length; i++) {
+                console.log(field[i].join(' '));
+            }
+        }
+
+        // Задание 6.5
+        function runTask5() {
+            console.log('\n=== Задание 6.5 - Значения из объекта ===');
+
+            const obj = {
+                some: 'some',
+                dom: 'text',
+                arr: [1, 2, 3, 4, 5],
+                tom: 'there'
+            };
+
+            const arrValues = [];
+
+            for (let key in obj) {
+                const value = obj[key];
+
+                if (Array.isArray(value)) {
+                    for (let i = 0; i < value.length; i++) {
+                        arrValues.push(value[i]);
+                    }
+                } else {
+                    arrValues.push(value);
+                }
+            }
+
+            console.log('Исходный объект:', obj);
+            console.log('Результат:', arrValues);
+        }
+
+        // Запустить все задания
+        function runAllTasks() {
+            console.clear();
+            console.log('🚀 Запуск всех заданий...\n');
+
+            runTask1();
+            runTask2();
+            // Задание 6.3 пропускаем, так как оно требует ввода
+            runTask4();
+            runTask5();
+
+            console.log('\n✅ Все задания выполнены! (кроме 6.3 - запустите его отдельно)');
+        }
+
+        // Автоматический запуск при загрузке страницы
+        window.addEventListener('load', () => {
+            console.log('👋 Добро пожаловать! Используйте кнопки на странице для запуска заданий.');
+            console.log('Или введите в консоли: runTask1(), runTask2(), и т.д.');
+        });
+    </script>
+</body>
+</html>
